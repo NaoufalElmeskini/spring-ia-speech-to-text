@@ -24,8 +24,10 @@ import java.util.stream.Stream;
 
 public class FileUtils {
     private static int counter;
-    public static final String IMAGE_RESOURCES_PATH = "src/main/resources/images";
+    // todo : put as configuration (@Value({xxx}))
     public static final String INPUT_RESOURCES_PATH = "src/main/resources/input";
+    public static final String IMAGE_RESOURCES_PATH = "src/main/resources/images";
+
     public static final String OUTPUT_RESOURCES_PATH = "src/main/resources/output";
 
     static {

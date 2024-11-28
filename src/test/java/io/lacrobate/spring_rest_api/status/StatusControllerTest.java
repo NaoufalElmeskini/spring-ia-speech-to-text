@@ -15,17 +15,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class StatusControllerTest {
-
-	@LocalServerPort
-	private int port;
-
 	private String urlBase;
 	@Autowired
 	private TestRestTemplate restTemplate;
 
 	@BeforeAll
 	void setUp() {
-		urlBase = "http://localhost:8080/rest-api";
+		urlBase = "http://localhost:8080/transcribe";
 	}
 
 	@Test
@@ -36,6 +32,4 @@ class StatusControllerTest {
 		//    then
 		assertEquals(result, HttpStatus.ACCEPTED);
 	}
-
-
 }
