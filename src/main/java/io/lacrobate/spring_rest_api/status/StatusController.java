@@ -5,9 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static io.lacrobate.spring_rest_api.status.StatusController.NAME;
+
 @RestController
-@RequestMapping("/status")
+@RequestMapping(NAME)
 public class StatusController {
+	public static final String NAME = "/status";
 
 	@GetMapping
 	public HttpStatus status() {

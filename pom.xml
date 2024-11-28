@@ -8,11 +8,11 @@
 		<version>3.3.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>io.lacrobate</groupId>
-	<artifactId>spring-rest-api</artifactId>
+	<groupId>io.lacrobate.java</groupId>
+	<artifactId>ia.stt</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-rest-api</name>
-	<description>Demo project for Spring Boot</description>
+	<name>ia-stt</name>
+	<description>Speech-to-Text app with spring and an IA api</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -59,8 +59,6 @@
 			<artifactId>httpclient5</artifactId>
 			<version>5.4.1</version>
 		</dependency>
-
-
 
 
 
