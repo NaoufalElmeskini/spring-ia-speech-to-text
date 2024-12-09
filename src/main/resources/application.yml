@@ -1,7 +1,7 @@
 spring:
   application:
-    name: rest-api
+    name: transcriber-api
 server:
   port : 8080
   servlet:
-    context-path: /rest-api
+    context-path: /transcriber-api

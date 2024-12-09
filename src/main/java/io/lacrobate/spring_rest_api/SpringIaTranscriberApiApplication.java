@@ -6,14 +6,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-public class SpringRestApiApplication {
+public class SpringIaTranscriberApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringRestApiApplication.class, args);
+		SpringApplication.run(SpringIaTranscriberApiApplication.class, args);
 	}
 
-	@Bean
-	public RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
 }

@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>io.lacrobate</groupId>
-	<artifactId>spring-rest-api</artifactId>
+	<artifactId>spring-transcriber-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-rest-api</name>
+	<name>spring-transcriber-api</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
