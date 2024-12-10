@@ -1,4 +1,4 @@
-package io.lacrobate.ia.transcriber.service;
+package io.lacrobate.ia.transcriber.transcribe;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;

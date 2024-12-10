@@ -1,4 +1,4 @@
-package io.lacrobate.ia.transcriber.service;
+package io.lacrobate.ia.transcriber.transcribe;
 
 public class TutorialPrompts {
     public static final String SUMMARIZE_PROMPT = """

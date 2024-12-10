@@ -18,4 +18,5 @@ public class SpringIaTranscriberApiApplication {
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
+
 }

@@ -1,11 +1,11 @@
-package io.lacrobate.ia.transcriber.status;
+package io.lacrobate.ia.transcriber.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static io.lacrobate.ia.transcriber.status.StatusController.NAME;
+import static io.lacrobate.ia.transcriber.controller.StatusController.NAME;
 
 @RestController
 @RequestMapping(NAME)

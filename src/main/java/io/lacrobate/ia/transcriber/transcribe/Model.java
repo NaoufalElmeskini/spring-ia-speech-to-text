@@ -1,4 +1,4 @@
-package io.lacrobate.ia.transcriber.service;
+package io.lacrobate.ia.transcriber.transcribe;
 
 import java.time.Instant;
 import java.time.LocalDateTime;

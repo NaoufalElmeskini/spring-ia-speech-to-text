@@ -1,4 +1,4 @@
-package io.lacrobate.ia.transcriber.status;
+package io.lacrobate.ia.transcriber.controller;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;

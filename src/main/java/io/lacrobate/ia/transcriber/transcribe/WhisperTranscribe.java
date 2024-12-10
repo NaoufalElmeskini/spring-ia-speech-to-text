@@ -1,4 +1,4 @@
-package io.lacrobate.ia.transcriber.service;
+package io.lacrobate.ia.transcriber.transcribe;
 
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.entity.mime.FileBody;
