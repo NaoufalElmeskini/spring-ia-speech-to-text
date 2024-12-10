@@ -32,14 +32,7 @@ public class WavFileSplitter {
                 long framesInThisFile = Math.min(totalFrames, framesPerChunk);
                 int bytesRead = inputStream.read(buffer, 0, (int) (framesInThisFile * frameSize));
                 if (bytesRead > 0) {
-                    File chunkFile = new File(sourceWavFile.getAbsolutePath().replace(
-                            ".wav", "-%d.wav".formatted(chunkCounter)));
-                    try (var partStream = new AudioInputStream(
-                            new ByteArrayInputStream(buffer, 0, bytesRead),
-                            format,
-                            framesInThisFile)) {
-                        AudioSystem.write(partStream, AudioFileFormat.Type.WAVE, chunkFile);
-                    }
+                    File chunkFile = createChunk(sourceWavFile, chunkCounter, buffer, bytesRead, format, framesInThisFile);
                     chunks.add(chunkFile);
                     chunkCounter++;
                 }
@@ -50,5 +43,16 @@ public class WavFileSplitter {
         }
 
         return chunks;
+    }
+
+    private static File createChunk(File sourceWavFile, int chunkCounter, byte[] buffer, int bytesRead, AudioFormat format,
+            long framesInThisFile) throws IOException {
+        File chunkFile = new File(sourceWavFile.getAbsolutePath().replace(
+                ".wav", "-%d.wav".formatted(chunkCounter)));
+        try (var partStream = new AudioInputStream(
+                new ByteArrayInputStream(buffer, 0, bytesRead), format, framesInThisFile)) {
+            AudioSystem.write(partStream, AudioFileFormat.Type.WAVE, chunkFile);
+        }
+        return chunkFile;
     }
 }

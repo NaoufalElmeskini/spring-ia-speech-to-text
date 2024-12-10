@@ -14,6 +14,8 @@ import org.apache.hc.core5.http.message.StatusLine;
 import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,6 +81,44 @@ public class WhisperTranscribe {
     public String transcribe(String fileName) {
         System.out.println("Transcribing " + fileName);
         File file = new File(fileName);
+
+        // Collect the transcriptions of each chunk
+        List<String> transcriptions = new ArrayList<>();
+
+        // First prompt is the word list
+        String prompt = WORD_LIST;
+
+        if (file.length() <= MAX_ALLOWED_SIZE) {
+            String transcription = transcribeChunk(prompt, file);
+            transcriptions = List.of(transcription);
+        } else {
+            var splitter = new WavFileSplitter();
+            List<File> chunks = splitter.splitWavFileIntoChunks(file);
+            for (File chunk : chunks) {
+                // Subsequent prompts are the previous transcriptions
+                String transcription = transcribeChunk(prompt, chunk);
+                transcriptions.add(transcription);
+                prompt = transcription;
+
+                // After transcribing, no longer need the chunk
+                if (!chunk.delete()) {
+                    System.out.println("Failed to delete " + chunk.getName());
+                }
+            }
+        }
+
+        // Join the individual transcripts and write to a file
+        String transcription = String.join(" ", transcriptions);
+        String fileNameWithoutPath = fileName.substring(
+                fileName.lastIndexOf("/") + 1);
+        FileUtils.writeTextToFile(transcription,
+                fileNameWithoutPath.replace(".wav", ".txt"));
+        return transcription;
+    }
+
+    public String transcribe(File file) {
+        String fileName = file.getName();
+        Path transcriptionFilePath = Paths.get(FileUtils.OUTPUT_RESOURCES_PATH, fileName + ".txt");
 
         // Collect the transcriptions of each chunk
         List<String> transcriptions = new ArrayList<>();
