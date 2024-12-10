@@ -5,3 +5,6 @@ server:
   port : 8080
   servlet:
     context-path: /transcriber-api
+
+inventory:
+  url: toto

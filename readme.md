@@ -1,7 +1,7 @@
 
 
 ## demarrer avec IDE :
-lancer [SpringRestApiApplication.java](src/main/java/io/lacrobate/spring_rest_api/SpringRestApiApplication.java)
+lancer [SpringRestApiApplication.java](src/main/java/io/lacrobate/ia/transcriber/SpringRestApiApplication.java)
 
 l'application est accessible sur {baseUrl}
 
