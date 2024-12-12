@@ -1,6 +1,6 @@
-package io.lacrobate.ia.transcriber.transcribe;
+package io.lacrobate.ia.transcriber.domain.file;
 
-import io.lacrobate.ia.transcriber.whisperadapter.WhisperTranscriber;
+import io.lacrobate.ia.transcriber.infrastructure.WhisperAdapter;
 
 import javax.sound.sampled.*;
 import java.io.ByteArrayInputStream;
@@ -26,7 +26,7 @@ public class WavFileSplitter {
 
             // Calculate the maximum number of frames for each chunk
             int frameSize = format.getFrameSize(); // Number of bytes in each frame
-            long framesPerChunk = WhisperTranscriber.MAX_CHUNK_SIZE_BYTES / frameSize;
+            long framesPerChunk = WhisperAdapter.MAX_CHUNK_SIZE_BYTES / frameSize;
 
             byte[] buffer = new byte[(int) (framesPerChunk * frameSize)];
 

@@ -1,4 +1,4 @@
-package io.lacrobate.ia.transcriber.transcribe;
+package io.lacrobate.ia.transcriber.domain.file;
 
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFNumbering;
@@ -179,7 +179,7 @@ public class FileUtils {
         }
     }
 
-    public static void createTranscriptFile(String fileName) {
-        Paths.get(FileUtils.OUTPUT_RESOURCES_PATH, fileName + ".txt");
+    public static Path createTranscriptFile(String fileName) {
+        return Paths.get(FileUtils.OUTPUT_RESOURCES_PATH, fileName + ".txt");
     }
 }

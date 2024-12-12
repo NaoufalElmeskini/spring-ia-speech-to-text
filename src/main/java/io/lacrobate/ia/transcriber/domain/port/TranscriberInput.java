@@ -1,8 +1,8 @@
-package io.lacrobate.ia.transcriber.transcribe;
+package io.lacrobate.ia.transcriber.domain.port;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public interface Transcriber {
+public interface TranscriberInput {
 //	@SuppressWarnings("SameParameterValue")
 	String getTranscription(String fileName);
 
