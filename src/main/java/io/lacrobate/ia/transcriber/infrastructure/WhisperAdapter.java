@@ -1,8 +1,10 @@
-package io.lacrobate.ia.transcriber.whisperadapter;
+package io.lacrobate.ia.transcriber.infrastructure;
 
-import io.lacrobate.ia.transcriber.transcribe.FileUtils;
-import io.lacrobate.ia.transcriber.transcribe.WavFileSplitter;
+import io.lacrobate.ia.transcriber.domain.file.FileUtils;
+import io.lacrobate.ia.transcriber.domain.file.WavFileSplitter;
+import io.lacrobate.ia.transcriber.domain.port.TranscriberOutput;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -28,7 +30,8 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class WhisperTranscriber {
+@Slf4j
+public class WhisperAdapter implements TranscriberOutput {
     public final static int MAX_ALLOWED_SIZE = 25 * 1024 * 1024;
     public final static int MAX_CHUNK_SIZE_BYTES = 20 * 1024 * 1024;
 
@@ -42,8 +45,9 @@ public class WhisperTranscriber {
 
     private final WhisperClient client;
 
+    @Override
     public String transcribe(String fileName) {
-        System.out.println("Transcribing " + fileName);
+        log.info("Transcribing {}", fileName);
         File file = new File(fileName);
 
         // Collect the transcriptions of each chunk
@@ -66,7 +70,7 @@ public class WhisperTranscriber {
 
                 // After transcribing, no longer need the chunk
                 if (!chunk.delete()) {
-                    System.out.println("Failed to delete " + chunk.getName());
+                    log.info("Failed to delete {}", chunk.getName());
                 }
             }
         }
@@ -80,6 +84,7 @@ public class WhisperTranscriber {
         return transcription;
     }
 
+    @Override
     public String transcribe(File file) {
         String fileName = file.getName();
 //        FileUtils.createTranscriptFile(fileName);
@@ -103,7 +108,7 @@ public class WhisperTranscriber {
                 prompt = transcription;
                 // After transcribing, no longer need the chunk
                 if (!chunk.delete()) {
-                    System.out.println("Failed to delete " + chunk.getName());
+                    log.error("Failed to delete {}", chunk.getName());
                 }
             }
         }

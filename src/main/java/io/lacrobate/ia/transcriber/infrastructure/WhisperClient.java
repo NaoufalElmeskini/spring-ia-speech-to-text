@@ -1,4 +1,4 @@
-package io.lacrobate.ia.transcriber.whisperadapter;
+package io.lacrobate.ia.transcriber.infrastructure;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.hc.client5.http.classic.methods.HttpPost;

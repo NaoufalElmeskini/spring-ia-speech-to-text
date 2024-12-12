@@ -1,6 +1,6 @@
-package io.lacrobate.ia.transcriber.controller;
+package io.lacrobate.ia.transcriber.application;
 
-import io.lacrobate.ia.transcriber.transcribe.TranscriberImpl;
+import io.lacrobate.ia.transcriber.domain.port.TranscriberInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +17,12 @@ public class TranscribeController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(TranscribeController.class);
 	@Autowired
-	private TranscriberImpl transcriber;
+	private TranscriberInput transcriberInput;
 
 	@GetMapping("/{fileName}")
 	public String transcribe(@PathVariable("fileName") String fileName){
 		LOGGER.info("transcribing {}", fileName);
-		return transcriber.getTranscription(fileName);
+		return transcriberInput.getTranscription(fileName);
 	}
 
 	@PostMapping(value = "/attached",
@@ -32,7 +32,7 @@ public class TranscribeController {
 			@RequestParam String fileName,
 			@RequestPart MultipartFile file) throws IOException {
 		LOGGER.info("transcribing: {}", file.getOriginalFilename());
-		return transcriber.getTranscription(file);
+		return transcriberInput.getTranscription(file);
 	}
 
 }
